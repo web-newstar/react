@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hello world</title>
+    <script src="./react-0.13.1//build/react.js"></script>
+    <script src="./react-0.13.1/build/JSXTransformer.js"></script>
+    <script>
+        // 初始化阶段可以使用的函数
+            // getDefaultProps:只调用一次,实例之间共享引用
+            // getInitialState:初始化每个实例特有的状态
+            // componentWillMount: render之前最后一次修改状态的机会
+            // render: 只能访问this.props和this.state,只有一个顶层组件,不允许修改状态和dom输出
+            // componentDidMount:成功render并渲染完成真实的dom之后触发,可以修改DOM
+    </script>
+    <script type="text/jsx">
+        var style={ color:"red", border:"1px #000 solid" }
+            var HelloWorld= React.createClass({
+                getDefaultProps:function(){
+                  console.log("getDefaultProps,1")
+                  // 创建class的时候就会调用,这样做的好处是尽可能早的把该做的事做完,提升性能
+                },
+                getInitialState:function(){
+                  console.log("getInitialState,2")
+                  return null;
+                },
+                componentWillMount:function(){
+                  console.log("componentWillMount,3")
+                },
+                render:function(){
+                    return <p ref="childp">
+                        Hello,{
+                            (function(obj){
+                              if(obj.props.name){
+                                return obj.props.name
+                              }else{
+                                return "world"
+                              }
+                            })(this)
+                        }
+                    </p>
+                },
+                componentDidMount:function(){
+                  console.log("componentDidMount,5")
+                }
+            })
+            React.render(<div style={style}><HelloWorld></HelloWorld></div>,document.body)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

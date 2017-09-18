@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>生命周期</title>
+  <script>
+    // 生命周期
+    // 初始化阶段-运行中阶段(实例绝大部分处于运行中)-销毁阶段
+       //  不同生命周期内可以自定义的函数
+       //  初始化阶段
+          //  1: getDefaultProps  初始化属性
+          //  2: getInitialState  初始化状态
+          //  3: componentWillMount  组件即将被装载(即将被渲染在页面上)
+          //  4: reder 渲染阶段
+          //  5: componentDidMount   这个函数执行时组件已经呗渲染在页面上
+       //  运行中阶段
+          //  1: componentWillReceiveProps 组件将要接受到属性时调用
+          //  2: shouldComponentUpdate  组件是否需要更新,返回布尔值
+          //  3: componentWillUpdate   做的是更新操作,而不是初始化阶段的装载操作
+          //  4: render         
+          //  5: componentDidMount  真正的dom渲染后调用
+      //  销毁阶段
+          //  componentWillUnmount
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
