@@ -6,20 +6,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>如何使用jsx</title>
-    <script src="../reactLabel/jquery.min.js"></script>
-    <script src="../react-0.13.1//build/react.js"></script>
-    <script src="../react-0.13.1/build/JSXTransformer.js"></script>
+    <script src="./reactLabel/jquery.min.js"></script>
+    <script src="./react-0.13.1//build/react.js"></script>
+    <script src="./react-0.13.1/build/JSXTransformer.js"></script>
     <script>
-        // jsx语法
-          // 1 元素名 (首字母大写,)
-          // 2 子节点
-          // 3 节点属性
-          // 需要注意的问题
-             // 1 首字母大小写
-             // 2 嵌套
-             // 3 求值表达式{}
-             // 4 驼峰命名
-             // 5 htmlFor和className
+        // 注释(在子节点和属性中)
+          // 单行注释
+          // 多行注释
+        // 万能的函数表达式
+
+    </script>
+    <script type="text/jsx">
+        var style={
+          color:"red",
+          border:"1px #000 solid"
+        }
+        var Helloworld=React.createClass({
+          getName:function(){
+            if(this.props.name){
+              return this.props.name
+            }else{
+              return 'world'
+            }
+          },
+          render:function(){
+            console.log(this)
+            // var name=this.getName();
+            return <p
+              /*
+                这是属性中多行注释
+              */
+              // 这是属性中单行注释
+            >hello,
+              {
+                /*
+                  这是在子节点中多行注释
+                */
+                // 这是在子节点中单行注释
+                //  this.props.name?this.props.name:'world'
+                //  name
+                // this.getName()
+
+                // (function(obj){
+                //   if(obj.props.name){
+                //     return obj.props.name
+                //   }else{
+                //     return obj.props.name
+                //   }
+                // })(this)
+
+                (function(obj){
+                  if(obj.props.name){
+                    return obj.props.name
+                  }else{
+                    return obj.props.name
+                  }
+                }(this))
+              }
+            </p>
+          }
+        })
+        // React.render(<div style={style}><Helloworld name="lt"/></div>,document.body)
+        React.render(<div style={style}><Helloworld name="lt"/></div>,document.body)
 
     </script>
 </head>
