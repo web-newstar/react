@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hello world</title>
+    <script src="./reactLabel/jquery.min.js"></script>
+    <script src="./react-0.13.1//build/react.js"></script>
+    <script src="./react-0.13.1/build/JSXTransformer.js"></script>
+    <script>
+        // 运行中阶段可以使用的函数
+            // componentWillReceiveProps 父组件修改属性触发,可以修改新属性,修改状态
+            // shouldComponentUpdate  返回render会阻止render调用,中断流程(小心使用)
+            // componentWillUpdate: 不能 修改属性和状态
+            // render: 只能访问this.props和this.state,只有一个顶层组件,不允许修改状态和dom输出
+            // componentDidUpdate:以修改DOM
+    </script>
+    <script type="text/jsx">
+        var count=0;
+        var style={ color:"red", border:"1px red solid"}
+            var HelloWorld= React.createClass({
+                componentWillReceiveProps:function(){
+                  console.log("接受新的状态,1")
+                },
+                shouldComponentUpdate:function(){
+                  console.log("是否更新",2)
+                  if(this.props.name.length>=5){
+                    return false;
+                  }else{
+                    return true
+                  }
+                },
+                componentWillUpdate:function(){
+                  console.log("将要更新",3)
+                },
+                render:function(){
+                    console.log("render,4")
+                    return <p ref="childp">
+                        Hello,{this.props.name?this.props.name:"world"}
+                    </p>
+                },
+                componentDidUpdate:function(){
+                  console.log("更新完毕,5")
+                },
+            })
+            var HellowUniverse=React.createClass({
+                getInitialState:function(){
+                  return {name:""}
+                },
+                handleChange:function(event){
+                  console.log(event.target)
+                  this.setState({name:event.target.value})
+                },
+                render:function(){
+                  console.log(this.state)
+                  return <div>
+                    <HelloWorld name={this.state.name}></HelloWorld>
+                    <br/>
+                    <input type="text" onChange={this.handleChange} />
+                  </div>
+                }
+            })
+        React.render(<div style={style}><HellowUniverse></HellowUniverse></div>,document.body)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

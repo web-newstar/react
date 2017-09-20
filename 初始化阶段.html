@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>hello world</title>
+    <script src="./reactLabel/jquery.min.js"></script>
     <script src="./react-0.13.1//build/react.js"></script>
     <script src="./react-0.13.1/build/JSXTransformer.js"></script>
     <script>
@@ -17,6 +18,9 @@
             // componentDidMount:成功render并渲染完成真实的dom之后触发,可以修改DOM
     </script>
     <script type="text/jsx">
+    $(document).ready(
+      function(){
+        var count=0;
         var style={ color:"red", border:"1px #000 solid" }
             var HelloWorld= React.createClass({
                 getDefaultProps:function(){
@@ -31,6 +35,7 @@
                   console.log("componentWillMount,3")
                 },
                 render:function(){
+                    console.log(this);
                     return <p ref="childp">
                         Hello,{
                             (function(obj){
@@ -47,6 +52,9 @@
                   console.log("componentDidMount,5")
                 }
             })
+      }
+    )
+
             React.render(<div style={style}><HelloWorld></HelloWorld></div>,document.body)
     </script>
 </head>
