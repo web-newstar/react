@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>属性的含义和用法</title>
+    <script src="../reactLabel/jquery.min.js"></script>
+    <script src="../react-0.13.1//build/react.js"></script>
+    <script src="../react-0.13.1/build/JSXTransformer.js"></script>
+    <script>
+        // 三个非dom属性：非dom标准属性
+          // 1 dangerouslySetInnerHTML
+          // 2 ref
+          // 3 key
+        // 使用非dom属性
+    </script>
+    <script type="text/jsx">
+        var rawHtml={
+            __html:"<h1>我是innerHtml</h1>"
+        }
+        var  props={
+          one:"蛋糕",
+          two:"蜡烛"
+        }
+        var HelloWord=React.createClass({
+
+             render:function(){
+               /*var data=this.props.props;
+               console.log(data);
+                return <div>
+                  <div>{data.one}</div>
+                  <div>{data.two}</div>
+                </div>*/
+                console.log(this.props);
+                return <div>
+                  {this.props.one}
+                </div>
+            }
+        })
+        var style={ color:"red", border:"1px red solid"}
+        var HelloWorlds= React.createClass({
+            render:function(){
+                return <p ref="childp">
+                    Hello,{this.props.one+this.props.two}
+                </p>
+            },
+        })
+        var HellowUniverse=React.createClass({
+            getInitialState:function(){
+              return {one:"牛奶",two:"蛋糕"}
+            },
+            handleChange:function(event){
+              this.setState({name:event.target.value})
+            },
+            render:function(){
+              console.log(this.state)
+              return <div>
+                <HelloWorlds {...this.state}></HelloWorlds>
+                <br/>
+                <input type="text" onChange={this.handleChange} />
+              </div>
+            }
+        })
+        // React.render(<HelloWord props={props}></HelloWord>,document.body)
+        // React.render(<HelloWord {...props}></HelloWord>,document.body)
+        React.render(<HellowUniverse></HellowUniverse>,document.body)
+    </script>
+</head>
+<body>
+
+</body>
+
+</html>

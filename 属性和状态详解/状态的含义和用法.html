@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>状态的含义和用法</title>
+    <script src="../reactLabel/jquery.min.js"></script>
+    <script src="../react-0.13.1//build/react.js"></script>
+    <script src="../react-0.13.1/build/JSXTransformer.js"></script>
+    <script>
+
+          // 1 getInitialState 初始化每个实例特有的状态
+          // 2 setState 更新组件的状态
+          // 3
+    </script>
+    <script type="text/jsx">
+        var Hello=React.createClass({
+          render:function(){
+            return <div>HEllo,{this.props.name}</div>
+          }
+        })
+        var HelloUniverse=React.createClass({
+          getInitialState:function(){
+            return {
+              name:"tom"
+            }
+          },
+          handleChange:function(event){
+            this.setState({name:event.target.value})
+          },
+          render:function(){
+            return <div>
+              <Hello name={this.state}></Hello>
+              <input type="text" onChange={this.handleChange}/>
+            </div>
+          }
+        })
+        React.render(<HelloUniverse></HelloUniverse>,document.body)
+    </script>
+</head>
+<body>
+
+</body>
+
+</html>

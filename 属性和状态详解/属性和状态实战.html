@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>属性和状态实战</title>
+    <script src="../reactLabel/jquery.min.js"></script>
+    <script src="../react-0.13.1//build/react.js"></script>
+    <script src="../react-0.13.1/build/JSXTransformer.js"></script>
+    <script>
+          // 编写一个简单的文章评论框
+            // 1 分析构成项目的组件
+            // 2 分析组件的关系和数据传递
+            // 3 编写代码
+    </script>
+    <script type="text/jsx">
+          var Content=React.createClass({
+            render(){
+              return <p>content</p>
+            }
+          })
+          var Commit=React.createClass({
+            render(){
+              return <div>
+                  <select>
+                    <option value="1">te</option>
+                    <option value="2">sdf</option>
+                    <option value="3">撒旦飞洒</option>
+                    <option value="4">撒旦法</option>
+
+                  </select>
+                 <Content></Content>
+              </div>
+            }
+          })
+          React.render(<Commit></Commit>,document.body)
+    </script>
+</head>
+<body>
+
+</body>
+
+</html>
